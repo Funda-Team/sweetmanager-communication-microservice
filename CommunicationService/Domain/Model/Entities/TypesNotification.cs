@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CommunicationService.Domain.Model.Aggregates;
 
-namespace CommunicationService;
+namespace CommunicationService.Domain.Model.Entities;
 
 public partial class TypesNotification
 {

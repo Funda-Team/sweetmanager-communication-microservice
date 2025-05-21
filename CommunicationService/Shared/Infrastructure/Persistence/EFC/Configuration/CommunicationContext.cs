@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CommunicationService.Domain.Model.Aggregates;
+using CommunicationService.Domain.Model.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CommunicationService.Shared.Infrastructure.Persistence.EFC.Configuration;
 
