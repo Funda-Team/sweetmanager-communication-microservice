@@ -1,5 +1,6 @@
 ﻿using CommunicationService.Domain.Model.Aggregates;
 using CommunicationService.Domain.Model.Entities;
+using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace CommunicationService.Shared.Infrastructure.Persistence.EFC.Configuration;
@@ -10,18 +11,18 @@ public partial class CommunicationContext : DbContext
     {
     }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder builder)
+    {
+        base.OnConfiguring(builder);
+        // Enable Audit Fields Interceptors
+        builder.AddCreatedUpdatedInterceptor();
+    }
+
     public CommunicationContext(DbContextOptions<CommunicationContext> options)
         : base(options)
     {
+        
     }
-
-    public virtual DbSet<Notification> Notifications { get; set; }
-
-    public virtual DbSet<TypesNotification> TypesNotifications { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySQL("server=localhost;database=communication;user=root;password=password;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

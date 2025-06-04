@@ -8,5 +8,13 @@ public partial class TypesNotification
 
     public string Name { get; set; } = null!;
 
+    public TypesNotification(string name)
+    {
+        Name = name;
+    }
+
     public virtual ICollection<Notification> Notifications { get; set; } = new List<Notification>();
+
+    public TypesNotification() { }
+
 }

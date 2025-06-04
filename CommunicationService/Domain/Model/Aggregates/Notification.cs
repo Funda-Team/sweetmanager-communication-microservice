@@ -23,4 +23,8 @@ public partial class Notification
     public string? Description { get; set; }
 
     public virtual TypesNotification? TypesNotificationsNavigation { get; set; }
+
+    public Notification() { }
+
+
 }
